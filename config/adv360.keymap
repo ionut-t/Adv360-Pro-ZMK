@@ -22,6 +22,30 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <150>;
         };
+
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+
+            quick-tap-ms = <150>;
+            hold-trigger-key-positions = <0 1 2 3 14 15 16 17 0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 46 47 48 49 50 51 60 61 62 63 64>;
+        };
+
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+
+            quick-tap-ms = <150>;
+            hold-trigger-key-positions = <7 8 9 10 11 12 13 21 22 23 24 25 26 27 39 40 41 42 43 44 45 54 55 56 57 58 59 71 72 73 74 75>;
+        };
     };
 
     macros {
@@ -110,6 +134,28 @@
         extra4 {
             display-name = "Yellow";
             status = "reserved";
+        };
+
+        layer_9 {
+            display-name = "Base";
+            bindings = <
+&kp EQUAL  &kp N1              &kp N2            &kp N3          &kp N4       &kp N5  &tog 1                                                                                      &mo 3                  &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q               &kp W             &kp E           &kp R        &kp T   &macro_arrow                                                                                &to 4                  &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+&kp ESC    &hm LEFT_COMMAND A  &hm LEFT_SHIFT S  &hm LEFT_ALT D  &hm LCTRL F  &kp G   &kp RA(NUMBER_3)  &kp LCTRL                     &kp LALT              &kp LGUI   &kp RCTRL  &kp RA(RIGHT_COMMAND)  &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z               &kp X             &kp C           &kp V        &kp B                                                   &kp LEFT_COMMAND      &kp RC(U)                                    &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&mo 2      &kp GRAVE           &kp LEFT_CONTROL  &kp LEFT        &kp RIGHT            &kp BSPC          &kp LS(LA(LC(LG(LEFT_GUI))))  &kp LC(A)             &kp RC(D)  &kp ENTER  &kp SPACE                      &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp RIGHT_ALT
+            >;
+        };
+
+        layer_10 {
+            display-name = "Base";
+            bindings = <
+&kp EQUAL  &kp N1               &kp N2             &kp N3           &kp N4        &kp N5  &tog 1                                                                                      &mo 3                  &kp N6  &kp N7                &kp N8              &kp N9            &kp N0                   &kp MINUS
+&kp TAB    &kp Q                &kp W              &kp E            &kp R         &kp T   &macro_arrow                                                                                &to 4                  &kp Y   &kp U                 &kp I               &kp O             &kp P                    &kp BSLH
+&kp ESC    &hml LEFT_COMMAND A  &hml LEFT_SHIFT S  &hml LEFT_ALT D  &hml LCTRL F  &kp G   &kp RA(NUMBER_3)  &kp LCTRL                     &kp LALT              &kp LGUI   &kp RCTRL  &kp RA(RIGHT_COMMAND)  &kp H   &hmr RIGHT_CONTROL J  &hmr RIGHT_SHIFT K  &hmr RIGHT_ALT L  &hmr RIGHT_COMMAND SEMI  &kp SQT
+&kp LSHFT  &kp Z                &kp X              &kp C            &kp V         &kp B                                                   &kp LEFT_COMMAND      &kp RC(U)                                    &kp N   &kp M                 &kp COMMA           &kp DOT           &kp FSLH                 &kp RSHFT
+&mo 2      &kp GRAVE            &kp LEFT_CONTROL   &kp LEFT         &kp RIGHT             &kp BSPC          &kp LS(LA(LC(LG(LEFT_GUI))))  &kp LC(A)             &kp RC(D)  &kp ENTER  &kp SPACE                      &kp UP                &kp DOWN            &kp LBKT          &kp RBKT                 &kp RIGHT_ALT
+            >;
         };
     };
 };
