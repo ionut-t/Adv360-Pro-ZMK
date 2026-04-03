@@ -68,11 +68,11 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp EQUAL  &kp N1               &kp N2            &kp N3             &kp N4        &kp N5  &tog 1                                                                               &mo 3                  &kp N6                         &kp N7                &kp N8              &kp N9            &kp N0               &kp MINUS
-&kp TAB    &kp Q                &kp W             &kp E              &kp R         &kp T   &none                                                                                &to 4                  &kp Y                          &kp U                 &kp I               &kp O             &kp P                &kp BSLH
-&kp ESC    &hml LEFT_COMMAND A  &hml LEFT_ALT S   &hml LEFT_SHIFT D  &hml LCTRL F  &kp G   &kp RA(NUMBER_3)  &kp LCTRL                     &kp LALT       &kp LGUI   &kp RCTRL  &kp RA(RIGHT_COMMAND)  &hmr LA(LC(LG(LEFT_SHIFT))) H  &hmr RIGHT_CONTROL J  &hmr RIGHT_SHIFT K  &hmr RIGHT_ALT L  &hmr RIGHT_GUI SEMI  &kp SQT
-&kp LSHFT  &kp Z                &kp X             &kp C              &kp V         &kp B                                                   &mo 5          &kp RC(U)                                    &kp N                          &kp M                 &kp COMMA           &kp DOT           &kp FSLH             &kp RSHFT
-&mo 2      &kp GRAVE            &kp LEFT_CONTROL  &kp LEFT           &kp RIGHT             &kp BSPC          &kp LS(LA(LC(LG(LEFT_GUI))))  &kp LC(A)      &kp RC(D)  &kp ENTER  &kp SPACE                                             &kp UP                &kp DOWN            &kp LBKT          &kp RBKT             &kp RIGHT_ALT
+&kp EQUAL  &kp N1               &kp N2           &kp N3             &kp N4        &kp N5  &tog 1                                                                               &mo 3                  &kp N6                         &kp N7                &kp N8              &kp N9            &kp N0               &kp MINUS
+&kp TAB    &kp Q                &kp W            &kp E              &kp R         &kp T   &mo 5                                                                                &to 4                  &kp Y                          &kp U                 &kp I               &kp O             &kp P                &kp BSLH
+&kp ESC    &hml LEFT_COMMAND A  &hml LEFT_ALT S  &hml LEFT_SHIFT D  &hml LCTRL F  &kp G   &kp RA(NUMBER_3)  &kp LCTRL                     &kp LALT       &kp LGUI   &kp RCTRL  &kp RA(RIGHT_COMMAND)  &hmr LA(LC(LG(LEFT_SHIFT))) H  &hmr RIGHT_CONTROL J  &hmr RIGHT_SHIFT K  &hmr RIGHT_ALT L  &hmr RIGHT_GUI SEMI  &kp SQT
+&kp LSHFT  &kp Z                &kp X            &kp C              &kp V         &kp B                                                   &mo 6          &kp RC(U)                                    &kp N                          &kp M                 &kp COMMA           &kp DOT           &kp FSLH             &kp RSHFT
+&mo 2      &kp GRAVE            &to 6            &kp LEFT           &kp RIGHT             &kp BSPC          &kp LS(LA(LC(LG(LEFT_GUI))))  &kp LC(A)      &kp RC(D)  &kp ENTER  &kp SPACE                                             &kp UP                &kp DOWN            &kp LBKT          &kp RBKT             &kp RIGHT_ALT
             >;
         };
 
@@ -127,6 +127,16 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(Z)  &kp LS(LG(Z))  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans     &trans     &trans     &trans     &trans         &trans
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans             &trans     &trans     &trans     &trans         &trans
+            >;
+        };
+
+        vim {
+            bindings = <
+&trans  &trans                   &trans             &trans          &trans                  &trans                  &trans                                      &trans  &trans          &trans     &trans         &trans           &trans     &trans
+&trans  &kp LS(LG(RIGHT_ARROW))  &kp LA(LS(RIGHT))  &trans          &trans                  &trans                  &trans                                      &trans  &kp RG(C)       &kp RG(Z)  &kp LS(LG(Z))  &kp RG(X)        &kp RG(V)  &trans
+&trans  &kp LEFT_GUI             &kp LEFT_ALT       &kp LEFT_SHIFT  &kp LEFT_CONTROL        &trans                  &trans  &trans  &trans      &trans  &trans  &trans  &kp LEFT_ARROW  &kp DOWN   &kp UP_ARROW   &kp RIGHT_ARROW  &trans     &trans
+&trans  &trans                   &trans             &trans          &kp LS(LG(LEFT_ARROW))  &kp LS(LA(LEFT_ARROW))                  &to 0       &trans                  &trans          &trans     &trans         &trans           &trans     &trans
+&trans  &trans                   &trans             &trans          &trans                                          &trans  &trans  &trans      &trans  &trans  &trans                  &trans     &trans         &trans           &trans     &trans
             >;
         };
     };
