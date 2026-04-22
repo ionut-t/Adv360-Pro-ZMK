@@ -9,7 +9,7 @@ SELINUX1 := :z
 SELINUX2 := ,z
 endif
 
-.PHONY: all left clean_firmware clean_image clean
+.PHONY: all left legacy legacy-left clean_firmware clean_image clean
 
 all:
 	$(shell bin/get_version_local.sh clique >> /dev/null)
@@ -33,6 +33,28 @@ left:
 		-e COMMIT=$(COMMIT) \
 		-e BUILD_RIGHT=false \
 		zmk
+	git checkout config/version.dtsi
+
+legacy:
+	$(shell bin/get_version_local.sh >> /dev/null)
+	$(DOCKER) build --tag zmk --file Dockerfile .
+	$(DOCKER) run --rm -it --name zmk \
+		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
+		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
+		-e TIMESTAMP=$(TIMESTAMP) \
+		-e COMMIT=$(COMMIT) \
+		zmk bash -c 'west build -s zmk/app -p -d build/left -b adv360_left -- -DZMK_CONFIG=/app/config && cp build/left/zephyr/zmk.uf2 firmware/$$TIMESTAMP-$$COMMIT-left-legacy.uf2 && west build -s zmk/app -p -d build/right -b adv360_right -- -DZMK_CONFIG=/app/config && cp build/right/zephyr/zmk.uf2 firmware/$$TIMESTAMP-$$COMMIT-right-legacy.uf2'
+	git checkout config/version.dtsi
+
+legacy-left:
+	$(shell bin/get_version_local.sh >> /dev/null)
+	$(DOCKER) build --tag zmk --file Dockerfile .
+	$(DOCKER) run --rm -it --name zmk \
+		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
+		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
+		-e TIMESTAMP=$(TIMESTAMP) \
+		-e COMMIT=$(COMMIT) \
+		zmk bash -c 'west build -s zmk/app -p -d build/left -b adv360_left -- -DZMK_CONFIG=/app/config && cp build/left/zephyr/zmk.uf2 firmware/$$TIMESTAMP-$$COMMIT-left-legacy.uf2'
 	git checkout config/version.dtsi
 
 clean_firmware:
